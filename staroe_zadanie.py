@@ -25,6 +25,7 @@ class Ui_MainWindow(object):
 "")
         self.secondTheme.setReadOnly(True)
         self.secondTheme.setObjectName("secondTheme")
+
         self.textVedi = QtWidgets.QTextEdit(self.centralwidget)
         self.textVedi.setEnabled(True)
         self.textVedi.setGeometry(QtCore.QRect(20, 80, 251, 31))
@@ -36,18 +37,15 @@ class Ui_MainWindow(object):
         self.textVedi.setLineWidth(1)
         self.textVedi.setReadOnly(True)
         self.textVedi.setObjectName("textVedi")
+
         self.textRezult = QtWidgets.QTextEdit(self.centralwidget)
         self.textRezult.setGeometry(QtCore.QRect(20, 120, 241, 31))
         self.textRezult.setStyleSheet("background-color: rgb(199, 211, 240);")
         self.textRezult.setReadOnly(True)
         self.textRezult.setObjectName("textRezult")
-        self.lineVvedi = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineVvedi.setGeometry(QtCore.QRect(280, 80, 101, 31))
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.lineVvedi.setFont(font)
-        self.lineVvedi.setText("")
-        self.lineVvedi.setObjectName("lineVvedi")
+
+
+
         self.pushButton1 = QtWidgets.QPushButton(self.centralwidget, clicked=lambda: self.enterS())
         self.pushButton1.setGeometry(QtCore.QRect(30, 330, 181, 51))
         font = QtGui.QFont()
@@ -55,9 +53,12 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton1.setFont(font)
-        self.pushButton1.setStyleSheet("background-color: rgb(0, 85, 255);\n"
-"color: rgb(255, 255, 255);")
+        self.pushButton1.setStyleSheet("background-color: rgb(0, 85, 255);\n" "color: rgb(255, 255, 255);")
         self.pushButton1.setObjectName("pushButton1")
+
+
+
+
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(240, 330, 141, 51))
         font = QtGui.QFont()
@@ -68,6 +69,15 @@ class Ui_MainWindow(object):
         self.pushButton.setStyleSheet("background-color: rgb(0, 85, 255);\n"
 "color: rgb(255, 255, 255);")
         self.pushButton.setObjectName("pushButton")
+
+        self.lineVvedi = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineVvedi.setGeometry(QtCore.QRect(280, 80, 101, 31))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.lineVvedi.setFont(font)
+        self.lineVvedi.setText("")
+        self.lineVvedi.setObjectName("lineVvedi")
+
         self.lineVvedi_2 = QtWidgets.QLineEdit(self.centralwidget)
         self.lineVvedi_2.setGeometry(QtCore.QRect(270, 120, 111, 31))
         font = QtGui.QFont()
@@ -75,14 +85,20 @@ class Ui_MainWindow(object):
         self.lineVvedi_2.setFont(font)
         self.lineVvedi_2.setText("")
         self.lineVvedi_2.setObjectName("lineVvedi_2")
+
+        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
+        self.textEdit.setGeometry(QtCore.QRect(160, 160, 221, 151))
+        self.textEdit.setObjectName("textEdit")
+
+
         self.textRezult_2 = QtWidgets.QTextEdit(self.centralwidget)
         self.textRezult_2.setGeometry(QtCore.QRect(20, 160, 131, 31))
         self.textRezult_2.setStyleSheet("background-color: rgb(199, 211, 240);")
         self.textRezult_2.setReadOnly(True)
         self.textRezult_2.setObjectName("textRezult_2")
-        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit.setGeometry(QtCore.QRect(160, 160, 221, 151))
-        self.textEdit.setObjectName("textEdit")
+
+
+
         self.secondTheme.raise_()
         self.mainTheme.raise_()
         self.textVedi.raise_()
@@ -93,7 +109,9 @@ class Ui_MainWindow(object):
         self.lineVvedi_2.raise_()
         self.textRezult_2.raise_()
         self.textEdit.raise_()
+
         MainWindow.setCentralWidget(self.centralwidget)
+
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 410, 21))
         self.menubar.setObjectName("menubar")
@@ -143,17 +161,20 @@ class Ui_MainWindow(object):
 
 
     def enterS(self):
-        itog = ''
-        schet = ''
-        schitaet = 0
-        kubiki_max = int(self.lineVvedi.text())
-        max_grani = int(self.lineVvedi_2.text())
-        for i in range(1, kubiki_max + 1):
-            grani = random.randint(1, max_grani)
-            itog += (str(i) + "-й кубик: " + str(grani)+"\n")
-            schitaet += grani
-            schet = "Сумма гарней: " + str(schitaet)
-            self.textEdit.setText(itog + str(schet))
+        try:
+            itog = ''
+            schet = ''
+            schitaet = 0
+            kubiki_max = int(self.lineVvedi.text())
+            max_grani = int(self.lineVvedi_2.text())
+            for i in range(1, kubiki_max + 1):
+                grani = random.randint(1, max_grani)
+                itog += (str(i) + "-й кубик: " + str(grani)+"\n")
+                schitaet += grani
+                schet = "Сумма гарней: " + str(schitaet)
+                self.textEdit.setText(itog + str(schet))
+        except Exception:
+            self.textEdit.setText("Ошибка, необходимо ввести цифровые значения!")
 
 
 if __name__ == '__main__':
